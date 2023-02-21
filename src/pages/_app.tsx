@@ -41,7 +41,7 @@ export default function Home(): JSX.Element {
   return (
     <div className="Home">
       <header className="App-header">
-        <img src="../../logo_vanildaiafelix.png" className="App-logo" alt="logo" />
+        <img src="../../public/logo_vanildaiafelix.png" className="App-logo" alt="logo" />
       </header>
       <main className="App-main">
         <div className="App-WhatsApp"><a href="" className="App-Contact">Conversar via WhatsApp</a></div>
