@@ -1,91 +1,71 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+'use client';
+import './style.css'
+import React from "react";
+import { useForm } from "react-hook-form";
 
-const inter = Inter({ subsets: ['latin'] })
+export default function Home(): JSX.Element {
+  const { register, handleSubmit } = useForm<FormValues>()
 
-export default function Home() {
+  type FormValues = {
+    formName: string,
+    formEmail: string,
+    formInstance: string
+  }
+
+  async function handleRegistration(fields: FormValues) {
+    const data = {
+      formName: fields.formName,
+      formEmail: fields.formEmail,
+      formInstance: fields.formInstance
+    };
+
+    const JSONdata = JSON.stringify(data);
+
+    const endpoint = '/api/hello';
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSONdata,
+    };
+
+    const response = await fetch(endpoint, options);
+
+    const result = await response.json();
+    console.log(result);
+    alert(`Agradeçemos a sua mensagem! Após analisarmos, entraremos em contato com você!`);
+  }
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <div className="Home">
+      <header className="App-header">
+        <img src='../../logo_vanildaiafelix.png' className="App-logo" alt="logo" />
+      </header>
+      <main className="App-main">
+        <div className="App-WhatsApp"><a href="" className="App-Contact">Conversar via WhatsApp</a></div>
+        <p>OU</p>
+        <form  onSubmit={handleSubmit(handleRegistration)} className="App-form">
+          <p className="App-form-title">Nos conte mais sobre seu caso e entramos em contato com você!</p>
+          <label htmlFor="formName">
+            Seu nome completo
+            <input type="text"  {...register("formName")} className="App-form-name"  />
+          </label>
+          <label htmlFor="formEmail">
+            Seu email pra contato
+            <input type="email" {...register("formEmail")} className="App-form-email" />
+          </label>
+          <label htmlFor="formInstance">
+            Descreva brevemente o seu caso para analisarmos
+            <textarea {...register("formInstance")}  cols={30} rows={10} className="App-form-instance"></textarea>
+          </label>
+          <input type="submit" value="Enviar" className="App-submit"></input>
+        </form>
+      </main>
+      <footer className="App-footer">
+        <p className="App-powered">powered by MzK Studio Inc.®</p>
+      </footer>
+    </div>
   )
 }
