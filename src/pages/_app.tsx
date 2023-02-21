@@ -3,6 +3,7 @@ import '../styles/style.css'
 import React from "react";
 import Image from 'next/image'
 import { useForm } from "react-hook-form";
+import logo from '../../public/logo_vanildaiafelix.png'
 
 export default function Home(): JSX.Element {
   const { register, handleSubmit } = useForm<FormValues>()
@@ -44,7 +45,7 @@ export default function Home(): JSX.Element {
       <header className="App-header">
         {/* <img src="../../logo_vanildaiafelix.png" className="App-logo" alt="logo" /> */}
         <Image
-          src="/logo_vanildaiafelix.png"
+          src={logo}
           alt="Vanilda Iafelix Logo"
           className="App-logo"
           width={300}
