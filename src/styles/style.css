@@ -15,10 +15,6 @@ header {
 	justify-content: center;
 }
 
-img {
-	height: 300px;
-	width: 300px;
-}
 
 main {
 	display: flex;

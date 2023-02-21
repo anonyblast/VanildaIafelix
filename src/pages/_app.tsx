@@ -1,6 +1,7 @@
 'use client';
 import '../styles/style.css'
 import React from "react";
+import Image from 'next/image'
 import { useForm } from "react-hook-form";
 
 export default function Home(): JSX.Element {
@@ -41,7 +42,14 @@ export default function Home(): JSX.Element {
   return (
     <div className="Home">
       <header className="App-header">
-        <img src="../../logo_vanildaiafelix.png" className="App-logo" alt="logo" />
+        {/* <img src="../../logo_vanildaiafelix.png" className="App-logo" alt="logo" /> */}
+        <Image
+          src="/logo_vanildaiafelix.png"
+          alt="Vanilda Iafelix Logo"
+          className="App-logo"
+          width={300}
+          height={300}
+        />
       </header>
       <main className="App-main">
         <div className="App-WhatsApp"><a href="" className="App-Contact">Conversar via WhatsApp</a></div>
