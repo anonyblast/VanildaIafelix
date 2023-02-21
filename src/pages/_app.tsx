@@ -53,7 +53,7 @@ export default function Home(): JSX.Element {
         />
       </header>
       <main className="App-main">
-        <div className="App-WhatsApp"><a href="" className="App-Contact">Conversar via WhatsApp</a></div>
+        <div className="App-WhatsApp"><a href="https://wa.me/qr/65KUED6VG5RDN1" className="App-Contact">Conversar via WhatsApp</a></div>
         <p>OU</p>
         <form  onSubmit={handleSubmit(handleRegistration)} className="App-form">
           <p className="App-form-title">Nos conte mais sobre seu caso e entramos em contato com você!</p>
