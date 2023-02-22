@@ -68,14 +68,14 @@ label {
 	width: 350px;
 }
 
-.App-form-name, .App-form-instance {
+.App-form-instance {
 	width: 300px;
 	margin: 15px;
 	border: none;
 	border-radius: 3px;
 }
 
-.App-form-email {
+.App-form-name, .App-form-email {
 	height: 20px;
 	width: 300px;
 	margin: 15px;
